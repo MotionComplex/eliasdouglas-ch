@@ -1,12 +1,6 @@
 import { Component, HostListener, ElementRef, Input, OnInit } from '@angular/core';
 
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
@@ -15,18 +9,6 @@ import {
   styleUrls: ['./content-box.component.scss'],
   animations: [
     trigger('textScrollAnimation', [
-      state('show', style({
-        opacity: 1,
-        transform: "translateX(0)"
-      })),
-      state('hide',   style({
-        opacity: 0,
-        transform: "translateX(-100%)"
-      })),
-      transition('show => hide', animate('200ms ease-out')),
-      transition('hide => show', animate('200ms ease-in'))
-    ]),
-    trigger('imageScrollAnimation', [
       state('show', style({
         opacity: 1,
         transform: "translateX(0)"
@@ -73,9 +55,10 @@ export class ContentBoxComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
     checkScroll() {
       const componentPosition = this.el.nativeElement.offsetTop
+      console.log(this.el.nativeElement)
       const scrollPosition = window.pageYOffset
 
-      if (scrollPosition * 3 >= componentPosition) {
+      if (scrollPosition >= componentPosition - 20) {
         this.textState = 'show';
         this.imageState = 'show';
       } else {
