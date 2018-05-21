@@ -1,0 +1,21 @@
+.box {
+    position: relative;
+}
+
+.image-content img {
+    max-width: 100%;
+}
+
+.text-card {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 35%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 0;
+}
+
+.text-card mat-card-context {
+    height: 80%;
+    overflow: hidden;
+}
